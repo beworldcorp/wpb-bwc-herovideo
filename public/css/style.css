@@ -12,6 +12,11 @@
 .video-container-desktop,
 .video-container-mobile {
   position: relative;
+  z-index: 1;
+}
+
+.header-container-mobile,
+.header-container-desktop {
   z-index: 2;
 }
 
@@ -223,6 +228,7 @@
   color: #999;
 }
 .header-container-events {
+  z-index: 5; 
   background-color: rgba(0,0,0,.8);
   display: flex;
   align-items: center;
