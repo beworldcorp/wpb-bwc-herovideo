@@ -1,4 +1,20 @@
-/*Responsive*/
+/* ===== Fallback image ===== */
+.video-fallback {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  display: none;
+}
+
+/* S'assure que les containers sont bien en positionnement relatif */
+.video-container-desktop,
+.video-container-mobile {
+  position: relative;
+}
+
+/* ===== Responsive ===== */
 .video-container-mobile, .video-container-mobile-full, .m-audio-control {
   display: none!important;
 }
@@ -46,7 +62,7 @@
   }
   .header-container-events {
     align-items: normal!important;
-      padding-left: 20px!important;
+    padding-left: 20px!important;
   }
 }
 @media only screen and (max-width : 905px) {
@@ -85,7 +101,7 @@
 @media only screen and (max-width : 640px) {
   .header-text-title {
     font-size: 22px!important;
-      line-height: 70px!important;
+    line-height: 70px!important;
     letter-spacing: 5px!important;
   }
   .header-text-stitle, .header-text-saison {
@@ -95,26 +111,27 @@
     font-size: 35px!important;
   }
 }
-/*Video Size*/
+
+/* ===== Video Size ===== */
 .video-container-desktop {
   position: relative;
   height: 100vh;
 }
-/*.video-container-desktop iframe, .video-container-mobile, .video-container-mobile iframe {*/
 .video-container-desktop video, .video-container-mobile, .video-container-mobile video {
   width: 100vw;
   height: 100vh;
   object-fit: cover;
 }
 .header-container-desktop {
-    position: absolute;
-    top: 0; right: 0; bottom: 0; left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;  
-    text-align: center;
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
-/*Text video*/
+
+/* ===== Text video ===== */
 .header-text-saison, .header-text-saison-number {
   color: #fff;
 }
@@ -134,7 +151,8 @@
 .header-text-saison-number {
   font-size: 60px;
 }
-/*Events*/
+
+/* ===== Events ===== */
 .event-container span, .event-container-complete span {
   display: block;
 }
@@ -144,24 +162,26 @@
   padding: 0px 15px;
   border-right: 2px solid #999;
   min-width: 150px;
-    min-height: 150px;
+  min-height: 150px;
 }
 .event-container:hover {
   cursor: pointer;
   background-color: #ac8840;
-  border-right: 2px solid #ac8840;;
+  border-right: 2px solid #ac8840;
 }
 .event-container a, .event-container-complete a {
-  text-decoration: none;  
+  text-decoration: none;
 }
-.event-container:hover .video-event-city, .event-container:hover .video-event-date, .event-container:hover .video-event-day {
+.event-container:hover .video-event-city,
+.event-container:hover .video-event-date,
+.event-container:hover .video-event-day {
   color: #fff;
 }
 .event-container-complete {
   color: #ac8840;
   text-align: center;
   padding: 20px;
-    min-height: 150px;
+  min-height: 150px;
 }
 .fa-calendar {
   padding-top: 20px;
@@ -184,7 +204,7 @@
   text-transform: uppercase;
   padding: 10px 0px;
   font-weight: 700;
-    font-size: 0.85em;
+  font-size: 0.85em;
   color: #ac8840;
 }
 .video-event-date {
@@ -192,39 +212,34 @@
   text-transform: uppercase;
 }
 .video-event-day {
-  color: #999;  
+  color: #999;
 }
 .header-container-events {
-/*  position: absolute;
-    top: 0; right: 0; bottom: 0; left: 0;*/
   background-color: rgba(0,0,0,.8);
-    display: flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-    flex-direction: column;
-    height: 220px;
+  flex-direction: column;
+  height: 220px;
   position: absolute;
-    bottom: 0;
-    right: 0;
-    left: 0;
-/*    align-items: flex-end;
-    justify-content: center;*/
+  bottom: 0;
+  right: 0;
+  left: 0;
 }
 .header-container-events__row {
-    overflow: scroll; 
-/*  max-width: 1280px;*/
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  overflow: scroll;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .header-container-events__row::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 .event-container-complete-line {
   display: none;
 }
 .event-container-complete-line a {
-    display: flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
