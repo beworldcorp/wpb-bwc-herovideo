@@ -1,0 +1,244 @@
+/*Responsive*/
+.video-container-mobile, .video-container-mobile-full, .m-audio-control {
+  display: none!important;
+}
+@media only screen and (max-width : 600px) {
+  .video-container-mobile, .video-container-mobile-full, .m-audio-control {
+    display: block!important;
+  }
+  .video-container-desktop, .video-container-desktop-full, .d-audio-control {
+    display: none!important;
+  }
+  .header-container-desktop {
+    bottom: 25%!important;
+  }
+  .event-container {
+    padding: 0px 7px!important;
+    min-width: 230px!important;
+  }
+}
+@media only screen and (max-width : 1550px) {
+  .event-container-complete {
+    display: none;
+  }
+  .event-container-complete-line {
+    display: block!important;
+  }
+  .fa-calendar {
+    padding-top: 0px!important;
+    font-size: 35px!important;
+  }
+  .header-container-events {
+    height: 250px!important;
+  }
+}
+@media only screen and (max-width : 1450px) {
+  .event-container {
+    padding: 0px 10px!important;
+  }
+}
+@media only screen and (max-width : 1250px) {
+  .event-container {
+    padding: 0px 7px!important;
+  }
+  .header-container-events__row {
+    justify-content: flex-start!important;
+  }
+  .header-container-events {
+    align-items: normal!important;
+      padding-left: 20px!important;
+  }
+}
+@media only screen and (max-width : 905px) {
+  .video-event-collab {
+    font-size: 0.75em!important;
+  }
+}
+@media only screen and (max-width : 885px) {
+  .video-event-city {
+    font-size: 0.75em!important;
+  }
+  .video-event-collab {
+    font-size: 0.7em!important;
+  }
+  .header-text-title {
+    font-size: 40px!important;
+  }
+  .header-text-stitle, .header-text-saison {
+    font-size: 33px!important;
+  }
+  .header-text-saison-number {
+    font-size: 50px!important;
+  }
+}
+@media only screen and (max-width : 755px) {
+  .header-text-title {
+    font-size: 30px!important;
+  }
+  .header-text-stitle, .header-text-saison {
+    font-size: 23px!important;
+  }
+  .header-text-saison-number {
+    font-size: 40px!important;
+  }
+}
+@media only screen and (max-width : 640px) {
+  .header-text-title {
+    font-size: 22px!important;
+      line-height: 70px!important;
+    letter-spacing: 5px!important;
+  }
+  .header-text-stitle, .header-text-saison {
+    font-size: 18px!important;
+  }
+  .header-text-saison-number {
+    font-size: 35px!important;
+  }
+}
+/*Video Size*/
+.video-container-desktop {
+  position: relative;
+  height: 100vh;
+}
+/*.video-container-desktop iframe, .video-container-mobile, .video-container-mobile iframe {*/
+.video-container-desktop video, .video-container-mobile, .video-container-mobile video {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+}
+.header-container-desktop {
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+    text-align: center;
+}
+/*Text video*/
+.header-text-saison, .header-text-saison-number {
+  color: #fff;
+}
+.header-text-title, .header-text-stitle {
+  display: block;
+  color: #fff;
+}
+.header-text-title {
+  font-size: 50px;
+  line-height: 96px;
+  letter-spacing: 15px;
+}
+.header-text-stitle, .header-text-saison {
+  font-size: 43px;
+  line-height: 60px;
+}
+.header-text-saison-number {
+  font-size: 60px;
+}
+/*Events*/
+.event-container span, .event-container-complete span {
+  display: block;
+}
+.event-container {
+  color: #fff;
+  margin: 20px 0px;
+  padding: 0px 15px;
+  border-right: 2px solid #999;
+  min-width: 150px;
+    min-height: 150px;
+}
+.event-container:hover {
+  cursor: pointer;
+  background-color: #ac8840;
+  border-right: 2px solid #ac8840;;
+}
+.event-container a, .event-container-complete a {
+  text-decoration: none;  
+}
+.event-container:hover .video-event-city, .event-container:hover .video-event-date, .event-container:hover .video-event-day {
+  color: #fff;
+}
+.event-container-complete {
+  color: #ac8840;
+  text-align: center;
+  padding: 20px;
+    min-height: 150px;
+}
+.fa-calendar {
+  padding-top: 20px;
+  font-size: 35px!important;
+  color: #fff;
+}
+.video-event-name {
+  color: #fff;
+  padding-top: 5px;
+  font-size: 1em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.video-event-collab {
+  color: #fff;
+  font-size: 0.8em;
+  text-transform: uppercase;
+}
+.video-event-city {
+  text-transform: uppercase;
+  padding: 10px 0px;
+  font-weight: 700;
+    font-size: 0.85em;
+  color: #ac8840;
+}
+.video-event-date {
+  color: #fff;
+  text-transform: uppercase;
+}
+.video-event-day {
+  color: #999;  
+}
+.header-container-events {
+/*  position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;*/
+  background-color: rgba(0,0,0,.8);
+    display: flex;
+  align-items: center;
+  justify-content: center;
+    flex-direction: column;
+    height: 220px;
+  position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+/*    align-items: flex-end;
+    justify-content: center;*/
+}
+.header-container-events__row {
+    overflow: scroll; 
+/*  max-width: 1280px;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.header-container-events__row::-webkit-scrollbar {
+    display: none;
+}
+.event-container-complete-line {
+  display: none;
+}
+.event-container-complete-line a {
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #fff;
+}
+.video-event-name-line {
+  padding-left: 15px;
+}
+.video-event-dateandtime {
+  display: flex;
+}
+.video-event-date {
+  flex: auto;
+}
+.video-event-time {
+  color: #fff;
+}
