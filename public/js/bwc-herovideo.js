@@ -9,7 +9,7 @@ jQuery(function ($) {
 
     const video = $video.get(0);
     let timer = setTimeout(() => {
-      if (video.readyState < 2 || video.networkState === 3) { // NETWORK_NO_SOURCE
+      if (video.networkState === 3) { // NETWORK_NO_SOURCE
         $video.hide();
         $img.show();
       }

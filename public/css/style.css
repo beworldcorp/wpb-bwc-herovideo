@@ -12,6 +12,11 @@
 .video-container-desktop,
 .video-container-mobile {
   position: relative;
+  z-index: 2;
+}
+
+.video-fallback-mobile {
+  z-index: 1;
 }
 
 /* ===== Responsive ===== */
