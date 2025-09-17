@@ -53,13 +53,11 @@ class BWC_Herovideo_Plugin {
           'type'        => 'attach_image',
           'heading'     => __('Image Desktop (fallback/poster)', 'wpb-bwc-herovideo'),
           'param_name'  => 'poster_desktop',
-          'description' => __('Affichée si la vidéo échoue + utilisée comme poster', 'wpb-bwc-herovideo'),
         ],
         [
           'type'        => 'attach_image',
           'heading'     => __('Image Mobile (fallback/poster)', 'wpb-bwc-herovideo'),
           'param_name'  => 'poster_mobile',
-          'description' => __('Affichée si la vidéo échoue + utilisée comme poster', 'wpb-bwc-herovideo'),
         ],
         [
           'type'        => 'textfield',
@@ -183,9 +181,8 @@ class BWC_Herovideo_Plugin {
 
     $completeCalendar = (get_locale() === 'en_US') ? 'View Full Calendar' : 'Calendrier complet';
 
-    // HTML — DESKTOP
-    $output  = '';
-    $output .= '<div class="video-container-desktop ' . esc_attr($extra_class) . '" ' . ($element_id ? 'id="'.esc_attr($element_id).'"' : '') . '>';
+    // === HTML — DESKTOP ===
+    $output  = '<div class="video-container-desktop ' . esc_attr($extra_class) . '" ' . ($element_id ? 'id="'.esc_attr($element_id).'"' : '') . '>';
       $poster_attr = $poster_desktop ? ' poster="'.esc_url($poster_desktop).'"' : '';
       $output .= '<video id="desktop-' . esc_attr($id_video) . '" playsinline autoplay muted loop src="' . $url_desktop . '"' . $poster_attr . '></video>';
       if ($poster_desktop) {
@@ -193,7 +190,7 @@ class BWC_Herovideo_Plugin {
       }
     $output .= '</div>';
 
-    // Overlay texte
+    // Overlay texte (desktop)
     $output .= '<div class="header-container-desktop">';
       $output .= '<div class="header-text-desktop">';
         $output .= '<span class="header-text-title">' . $titre . '</span>';
@@ -202,9 +199,24 @@ class BWC_Herovideo_Plugin {
       $output .= '</div>';
     $output .= '</div>';
 
-    // Bandeau événements
+    // === HTML — MOBILE ===
+    $output .= '<div class="video-container-mobile ' . esc_attr($extra_class) . '" ' . ($element_id ? 'id="'.esc_attr($element_id).'"' : '') . '>';
+      $poster_m = $poster_mobile ?: $poster_desktop;
+      $poster_m_attr = $poster_m ? ' poster="'.esc_url($poster_m).'"' : '';
+      $output .= '<video id="mobile-' . esc_attr($id_video) . '" playsinline autoplay muted loop src="' . $url_mobile . '"' . $poster_m_attr . '></video>';
+      if ($poster_m) {
+        $output .= '<img id="mobile-fallback-' . esc_attr($id_video) . '" class="video-fallback video-fallback-mobile" src="' . esc_url($poster_m) . '" alt="' . esc_attr($titre ?: 'Hero fallback') . '">';
+      }
+      $output .= '<div class="header-container-mobile">';
+        $output .= '<div class="header-blank-mobile"></div>';
+        $output .= '<div class="header-text-mobile">' . do_shortcode($content) . '</div>';
+      $output .= '</div>';
+    $output .= '</div>';
+
+    // === Bandeau événements (toujours après mobile) ===
     $output .= '<div class="header-container-events">';
-      $output .= '<div class="header-container-events__row">';
+      if (!empty($allEvents)) {
+        $output .= '<div class="header-container-events__row">';
         foreach (array_slice($allEvents, 0, 7) as $value) {
           $output .= '<div class="event-container">';
             $output .= '<a href="' . $value['link'] . '">';
@@ -226,27 +238,19 @@ class BWC_Herovideo_Plugin {
             $output .= '<i class="fa fa-calendar"></i>';
           $output .= '</a>';
         $output .= '</div>';
-      $output .= '</div>';
-      $output .= '<div class="event-container-complete-line">';
-        $output .= '<a href="https://alexandracardinale.com/calendrier/">';
-          $output .= '<i class="fa fa-calendar"></i>';
-          $output .= '<span class="video-event-name-line">' . esc_html($completeCalendar) . '</span>';
-        $output .= '</a>';
-      $output .= '</div>';
-    $output .= '</div>';
+        $output .= '</div>'; // row
 
-    // HTML — MOBILE
-    $output .= '<div class="video-container-mobile ' . esc_attr($extra_class) . '" ' . ($element_id ? 'id="'.esc_attr($element_id).'"' : '') . '>';
-      $poster_m = $poster_mobile ?: $poster_desktop;
-      $poster_m_attr = $poster_m ? ' poster="'.esc_url($poster_m).'"' : '';
-      $output .= '<video id="mobile-' . esc_attr($id_video) . '" playsinline autoplay muted loop src="' . $url_mobile . '"' . $poster_m_attr . '></video>';
-      if ($poster_m) {
-        $output .= '<img id="mobile-fallback-' . esc_attr($id_video) . '" class="video-fallback video-fallback-mobile" src="' . esc_url($poster_m) . '" alt="' . esc_attr($titre ?: 'Hero fallback') . '">';
+        $output .= '<div class="event-container-complete-line">';
+          $output .= '<a href="https://alexandracardinale.com/calendrier/">';
+            $output .= '<i class="fa fa-calendar"></i>';
+            $output .= '<span class="video-event-name-line">' . esc_html($completeCalendar) . '</span>';
+          $output .= '</a>';
+        $output .= '</div>';
+      } else {
+        $output .= '<div class="event-container">';
+          $output .= '<span class="video-event-name">Aucun événement à venir</span>';
+        $output .= '</div>';
       }
-      $output .= '<div class="header-container-mobile">';
-        $output .= '<div class="header-blank-mobile"></div>';
-        $output .= '<div class="header-text-mobile">' . do_shortcode($content) . '</div>';
-      $output .= '</div>';
     $output .= '</div>';
 
     return $output;

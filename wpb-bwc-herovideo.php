@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: HeroVideo (WPBakery)
+Plugin Name: BWC HeroVideo (WPBakery)
 Description: Élément WPBakery "Hero Video".
 Version: 1.1.2
 Author: BWC
